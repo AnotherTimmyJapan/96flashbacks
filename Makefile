@@ -355,6 +355,9 @@ load: $(ROM)
 
 libultra: $(BUILD_DIR)/libultra.a
 
+patch: $(ROM)
+	$(FLIPS) --create --bps baserom.$(VERSION).z64 $(ROM) $(BUILD_DIR)/$(TARGET).bps
+
 $(BUILD_DIR)/asm/boot.o: $(IPL3_RAW_FILES)
 $(BUILD_DIR)/src/game/crash_screen.o: $(CRASH_TEXTURE_C_FILES)
 
