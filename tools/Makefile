@@ -23,6 +23,15 @@ n64graphics_CFLAGS  := -DN64GRAPHICS_STANDALONE
 
 n64graphics_ci_SOURCES := n64graphics_ci_dir/n64graphics_ci.c n64graphics_ci_dir/exoquant/exoquant.c n64graphics_ci_dir/utils.c
 
+flips: CC := $(CXX)
+flips_SOURCES := FlipsSrc/Flips.cpp
+flips_CFLAGS := -Wall -Wextra -fopenmp -Os -flto -fuse-linker-plugin -fomit-frame-pointer -fmerge-all-constants \
+-fvisibility=hidden -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables \
+-ffunction-sections -fdata-sections -Wl,--gc-sections \
+-fvisibility=hidden -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables \
+-ffunction-sections -fdata-sections -Wl,--gc-sections  \
+-Wl,-z,relro,-z,now,--as-needed,--hash-style=gnu,--relax
+
 mio0_SOURCES := libmio0.c
 mio0_CFLAGS := -DMIO0_STANDALONE
 
